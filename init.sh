@@ -65,8 +65,7 @@ install_minikube() {
 
         newgrp docker
         echo -e "\n\u2705  Setup complete! Minikube is now ready.\n"
-
-        setup_minikube
+        echo -e " Please execute: bash ./Kubernetes/init.sh"
     fi
 }
 
