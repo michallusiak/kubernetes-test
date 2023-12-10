@@ -52,7 +52,7 @@ install_packages() {
 install_minikube() {
     # Check if minikube is already installed.
     if [ ! -f "/usr/local/bin/minikube" ]; then
-        echo -e "\nMinikube not found.\n\u2705  Installing...\n"
+        echo -e "Minikube not found.\n\n\u2705  Installing...\n"
 
         # Download and install the most recent version of Minikube.
         curl -L https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 -o /usr/local/bin/minikube \
@@ -61,13 +61,12 @@ install_minikube() {
         # Create a symbolic link to minikube's binary named 'kubectl'.
         ln -s -f /usr/local/bin/minikube /usr/local/bin/kubectl
 
-        echo -e "\u2705  All done!"
+        echo -e "\nFinalizing the setup is almost complete. Simply press CTRL+D to finish."
 
         newgrp docker
+        echo -e "\n\u2705  Setup complete! Minikube is now ready.\n"
 
-        echo "exiting..."
-        exit 0
-        # reboot now
+        setup_minikube
     fi
 }
 
@@ -85,7 +84,7 @@ setup_minikube() {
         else
             # Start Minikube as the current user.
             # https://minikube.sigs.k8s.io/docs/drivers/
-            #minikube start --nodes "$k8s_node_count" --profile "$k8s_name" --driver=docker
+            minikube start --nodes "$k8s_node_count" --profile "$k8s_name" --driver=docker
             minikube profile "$k8s_name"
 
             if [ "$k8s_node_count" -gt 1 ]; then
