@@ -81,7 +81,7 @@ install_minikube() {
         # echo -e " Please execute: bash ./Kubernetes/init.sh"
 
         install_cloud9_cli
-        set_hostname
+        setup_minikube
     fi
 }
 
