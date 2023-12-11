@@ -12,7 +12,9 @@ set_hostname() {
             hostnamectl set-hostname "$ec2_host_name"
         fi
     else
+        install_cloud9_cli
         setup_minikube
+
         exit 0
     fi
 }
@@ -50,15 +52,18 @@ install_packages() {
 }
 
 install_cloud9_cli() {
+    local doc_dir="/home/ec2-user/environment/Kubernetes/"
+
     echo -e "\n\u2705  Installing the Cloud9 CLI...\n"
 
     # Install the Cloud9 CLI: https://cloud9-sdk.readme.io/docs/the-cloud9-cli
     npm install -g c9
 
     echo -e "\n\u2705  Setting up the IDE...\n"
-    c9 open "/home/ec2-user/environment/Kubernetes/cluster.md"
-    c9 open "/home/ec2-user/environment/Kubernetes/node.md"
-    c9 open "/home/ec2-user/environment/Kubernetes/pod.md"
+    c9 open "$doc_dir/pod.yaml"
+    c9 open "$doc_dir/node.yaml"
+    c9 open "$doc_dir/cluster.yaml"
+    c9 open "$doc_dir/minikube.yaml"
 }
 
 install_minikube() {
@@ -80,8 +85,9 @@ install_minikube() {
         echo -e "\n\u2705  Setup complete! Minikube is now ready.\n"
         # echo -e " Please execute: bash ./Kubernetes/init.sh"
 
-        install_cloud9_cli
-        setup_minikube
+        #install_cloud9_cli
+        #setup_minikube
+        bash /home/ec2-user/environment/Kubernetes/init.sh
     fi
 }
 
@@ -112,7 +118,7 @@ setup_minikube() {
             fi
 
             # Display Minikube cluster status.
-            echo -e "\n\u0001F680  Cluster status:\n"
+            echo -e "\n Cluster status:\n"
             kubectl get nodes
         fi
     fi

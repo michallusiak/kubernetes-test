@@ -1,0 +1,81 @@
+# --------------------------------------------------------------------------------------------
+# Minikube - 
+# --------------------------------------------------------------------------------------------
+
+# -----------------------------
+# 1. Minikube Cluster Commands:
+# -----------------------------
+    - Start a local Minikube cluster:
+      $ minikube start
+
+    - Stop the running Minikube cluster:
+      $ minikube stop
+
+    - Delete the Minikube cluster:
+      $ minikube delete
+
+    - Display the status of the Minikube cluster:
+      $ minikube status
+
+    - Open the Kubernetes dashboard in a web browser:
+      $ minikube dashboard
+
+# -----------------------------------
+# 2. Minikube Configuration Commands:
+# -----------------------------------
+    - Set a configuration property for Minikube:
+      $ minikube config set <property> <value>
+
+    - Get the value of a specific configuration property:
+      $ minikube config get <property>
+
+    - Delete a configuration property:
+      $ minikube config delete <property>
+
+    - View the current Minikube configuration:
+      $ minikube config view
+
+# ----------------------------
+# 3. Minikube Add-On Commands:
+# ----------------------------
+    - List all available Minikube add-ons:
+      $ minikube addons list
+
+    - Enable a specific Minikube add-ons:
+      $ minikube addons enable <addon>
+
+    - Disable a specific Minikube add-on:
+      $ minikube addons disable <addon>
+
+# --------------------------------
+# 4. Minikube Networking Commands:
+# --------------------------------
+    - Open a service in a web browser:
+      $ minikube service <service-name>
+
+    - Get the IP address of the Minikube cluster:
+      $ minikube ip
+
+    - SSH into the Minikube VM:
+      $ minikube ssh
+
+# ---------------------------------
+# 5. Minikube Updates and Upgrades:
+# ---------------------------------
+    - Check for available updates for Minikube:
+      $ minikube update-check
+
+    - Update Minikube to the latest version:
+      $ minikube update
+
+    - Upgrade the Minikube cluster to the latest Kubernetes version:
+      $ minikube upgrade
+
+# ---------------------------
+#6. Minikube Troubleshooting:
+# ---------------------------
+    - Print the logs of the Minikube cluster:
+      $ minikube logs
+
+    - SSH into the Minikube VM for troubleshooting purposes:
+      $ minikube ssh
