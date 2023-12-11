@@ -63,7 +63,7 @@ install_cloud9_cli() {
 install_minikube() {
     # Check if minikube is already installed.
     if [ ! -f "/usr/local/bin/minikube" ]; then
-        echo -e "Minikube not found.\n\n\u2705  Installing...\n"
+        echo -e "\nMinikube not found.\n\n\u2705  Installing...\n"
 
         # Download and install the most recent version of Minikube.
         curl -L https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 -o /usr/local/bin/minikube \
@@ -75,6 +75,8 @@ install_minikube() {
         echo -e "\nFinalizing the setup is almost complete. Simply press CTRL+D to finish."
 
         newgrp docker
+        install_cloud9_cli
+
         echo -e "\n\u2705  Setup complete! Minikube is now ready.\n"
         echo -e " Please execute: bash ./Kubernetes/init.sh"
     fi
@@ -115,5 +117,4 @@ setup_minikube() {
 
 set_hostname
 install_packages "docker" "conntrack" "git" "tmux" "jq"
-install_cloud9_cli
 install_minikube
