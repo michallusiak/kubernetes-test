@@ -54,6 +54,7 @@ install_packages() {
 install_cloud9_cli() {
     local doc_dir="/home/ec2-user/environment/Kubernetes/"
 
+    echo "who - install c9 cli: $(whoami)"
     echo -e "\n\u2705  Installing the Cloud9 CLI...\n"
 
     # Install the Cloud9 CLI: https://cloud9-sdk.readme.io/docs/the-cloud9-cli
@@ -79,7 +80,7 @@ install_minikube() {
         ln -s -f /usr/local/bin/minikube /usr/local/bin/kubectl
 
         echo -e "\nFinalizing the setup is almost complete. Simply press CTRL+D to finish."
-        echo "who: $(whoami)"
+        echo "who - install mk before newgrp: $(whoami)"
 
         newgrp docker
 
@@ -89,7 +90,7 @@ install_minikube() {
         #install_cloud9_cli
         #setup_minikube
 
-        echo "who: $(whoami)"
+        echo "who - install mk after newgrp: $(whoami)"
         bash /home/ec2-user/environment/Kubernetes/init.sh
     fi
 }
