@@ -54,17 +54,16 @@ install_packages() {
 install_cloud9_cli() {
     local doc_dir="/home/ec2-user/environment/Kubernetes/"
 
-    echo "who - install c9 cli: $(whoami)"
     echo -e "\n\u2705  Installing the Cloud9 CLI...\n"
 
     # Install the Cloud9 CLI: https://cloud9-sdk.readme.io/docs/the-cloud9-cli
-    sudo -u ec2-user npm install -g c9
+    /home/ec2-user/.nvm/versions/node/v18.17.1/bin/npm install -g c9
 
     echo -e "\n\u2705  Setting up the IDE...\n"
-    sudo -u ec2-user c9 open "$doc_dir/pod.yaml"
-    sudo -u ec2-user c9 open "$doc_dir/node.yaml"
-    sudo -u ec2-user c9 open "$doc_dir/cluster.yaml"
-    sudo -u ec2-user c9 open "$doc_dir/minikube.yaml"
+    /home/ec2-user/.nvm/versions/node/v18.17.1/bin/c9 open "$doc_dir/pod.yaml"
+    /home/ec2-user/.nvm/versions/node/v18.17.1/bin/c9 open "$doc_dir/node.yaml"
+    /home/ec2-user/.nvm/versions/node/v18.17.1/bin/c9 open "$doc_dir/cluster.yaml"
+    /home/ec2-user/.nvm/versions/node/v18.17.1/bin/c9 open "$doc_dir/minikube.yaml"
 }
 
 install_minikube() {
@@ -79,19 +78,16 @@ install_minikube() {
         # Create a symbolic link to minikube's binary named 'kubectl'.
         ln -s -f /usr/local/bin/minikube /usr/local/bin/kubectl
 
-        echo -e "\nFinalizing the setup is almost complete. Simply press CTRL+D to finish."
-        echo "who - install mk before newgrp: $(whoami)"
-
-        newgrp docker
+        # echo -e "\nFinalizing the setup is almost complete. Simply press CTRL+D to finish."
+        # newgrp docker
 
         echo -e "\n\u2705  Setup complete! Minikube is now ready.\n"
         # echo -e " Please execute: bash ./Kubernetes/init.sh"
 
-        #install_cloud9_cli
-        #setup_minikube
+        install_cloud9_cli
+        setup_minikube
 
-        echo "who - install mk after newgrp: $(whoami)"
-        bash /home/ec2-user/environment/Kubernetes/init.sh
+        # bash /home/ec2-user/environment/Kubernetes/init.sh
     fi
 }
 
