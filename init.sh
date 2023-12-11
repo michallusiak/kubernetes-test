@@ -25,24 +25,24 @@ install_packages() {
     # Check whether the OS is Amazon Linux.
     if [ "$(awk -F= '$1=="ID" { print $2 ;}' /etc/os-release | sed -e 's/^"//' -e 's/"$//')" == "amzn" ]; then
         echo -e "\u2705  Updating the system packages..."
-        sudo yum -y update
+        yum -y update
 
         for package in "${packages[@]}"; do
             if [ -x $(command -v "$package") ]; then
                 echo -e "\n\u2705  Installing: $package...\n"
-                sudo yum -y install "$package"
+                yum -y install "$package"
 
-                # case $package in
-                #     "docker")
-                #         # Initiate Docker and grant permissions to the 'docker' group.
-                #         if ! systemctl start docker || ! systemctl enable docker; then
-                #             echo -e "Error:\tFailed to start or enable Docker."
-                #             exit 1
-                #         else
-                #             usermod -aG docker ec2-user
-                #         fi
-                #         ;;
-                # esac
+                case $package in
+                    "docker")
+                        # Initiate Docker and grant permissions to the 'docker' group.
+                        if ! systemctl start docker || ! systemctl enable docker; then
+                            echo -e "Error:\tFailed to start or enable Docker."
+                            exit 1
+                        else
+                            usermod -aG docker ec2-user
+                        fi
+                        ;;
+                esac
             fi
         done
     else
@@ -69,7 +69,7 @@ install_cloud9_cli() {
 install_minikube() {
     # Check if minikube is already installed.
     if [ ! -f "/usr/local/bin/minikube" ]; then
-        echo -e "\nMinikube not found.\n\n\u2705  Installing...\n"
+        echo -e "\nMinikube not found.\n\n\u2705  Installing Minikube...\n"
 
         # Download and install the most recent version of Minikube.
         sudo curl -L https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 -o /usr/local/bin/minikube \
@@ -127,6 +127,5 @@ setup_minikube() {
 }
 
 set_hostname
-install_packages "conntrack" "git" "tmux" "jq"
 # install_packages "docker" "conntrack" "git" "tmux" "jq"
 install_minikube
