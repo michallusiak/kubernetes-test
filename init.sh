@@ -55,9 +55,10 @@ install_cloud9_cli() {
     # Install the Cloud9 CLI: https://cloud9-sdk.readme.io/docs/the-cloud9-cli
     npm install -g c9
 
-    c9 open "Kubernetes/cluster.md"
-    c9 open "Kubernetes/node.md"
-    c9 open "Kubernetes/pod.md"
+    echo -e "\n\u2705  Setting up the IDE...\n"
+    c9 open "/home/ec2-user/environment/Kubernetes/cluster.md"
+    c9 open "/home/ec2-user/environment/Kubernetes/node.md"
+    c9 open "/home/ec2-user/environment/Kubernetes/pod.md"
 }
 
 install_minikube() {
@@ -75,10 +76,12 @@ install_minikube() {
         echo -e "\nFinalizing the setup is almost complete. Simply press CTRL+D to finish."
 
         newgrp docker
-        install_cloud9_cli
 
         echo -e "\n\u2705  Setup complete! Minikube is now ready.\n"
-        echo -e " Please execute: bash ./Kubernetes/init.sh"
+        # echo -e " Please execute: bash ./Kubernetes/init.sh"
+
+        install_cloud9_cli
+        set_hostname
     fi
 }
 
