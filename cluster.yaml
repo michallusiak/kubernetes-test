@@ -17,43 +17,29 @@
 ##   - Etcd: Stores all cluster data. Consistent and highly available Kubernetes backing store.
 ## --------------------------------------------------------------------------------------------
 
-# Create a new cluster:
-$ minikube start --nodes 3 --profile k8s --driver=docker
+- Create a new cluster:
+  $ minikube start --nodes 3 --profile k8s --driver=docker
 
-# List all available minikube profiles (clusters):
-$ minikube profile list
+- List all available minikube profiles (clusters):
+  $ minikube profile list
 
-# Switch to a specific profile (cluster):
-```console
-$ minikube profile <PROFILE / CLUSTER_NAME>
-```
+- Switch to a specific profile (cluster):
+  $ minikube profile <PROFILE / CLUSTER_NAME>
 
-# Check active cluster:
-```console
-$ kubectl config current-context
-```
+- Check active cluster:
+  $ kubectl config current-context
 
-# List all nodes in active cluster:
-```console
-$ kubectl get nodes
-```
+- List all nodes in active cluster:
+  $ kubectl get nodes
 
-# View the cluster events:
-```console
-$ kubectl get events
-```
+- View the cluster events:
+  $ kubectl get events
 
-# View kubectl configuration:
-```console
-$ kubectl config view
-```
+- View kubectl configuration:
+  $ kubectl config view
 
-# Stopping the cluster:
-```console
-$ minikube stop <CLUSTER_NAME>
-```
+- Stopping the cluster:
+  $ minikube stop <CLUSTER_NAME>
 
-# Remove the current cluster:
-```console
-$ minikube delete
-```
+- Remove the current cluster:
+  $ minikube delete
