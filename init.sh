@@ -49,6 +49,17 @@ install_packages() {
     fi
 }
 
+install_cloud9_cli() {
+    echo -e "\n\u2705  Installing the Cloud9 CLI...\n"
+
+    # Install the Cloud9 CLI: https://cloud9-sdk.readme.io/docs/the-cloud9-cli
+    npm install -g c9
+
+    c9 open "Kubernetes/cluster.md"
+    c9 open "Kubernetes/node.md"
+    c9 open "Kubernetes/pod.md"
+}
+
 install_minikube() {
     # Check if minikube is already installed.
     if [ ! -f "/usr/local/bin/minikube" ]; then
@@ -104,4 +115,5 @@ setup_minikube() {
 
 set_hostname
 install_packages "docker" "conntrack" "git" "tmux" "jq"
+install_cloud9_cli
 install_minikube
