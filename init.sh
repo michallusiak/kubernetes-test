@@ -58,13 +58,13 @@ install_cloud9_cli() {
     echo -e "\n\u2705  Installing the Cloud9 CLI...\n"
 
     # Install the Cloud9 CLI: https://cloud9-sdk.readme.io/docs/the-cloud9-cli
-    /home/ec2-user/.nvm/versions/node/v18.17.1/bin/npm install -g c9
+    sudo -u ec2-user npm install -g c9
 
     echo -e "\n\u2705  Setting up the IDE...\n"
-    c9 open "$doc_dir/pod.yaml"
-    c9 open "$doc_dir/node.yaml"
-    c9 open "$doc_dir/cluster.yaml"
-    c9 open "$doc_dir/minikube.yaml"
+    sudo -u ec2-user c9 open "$doc_dir/pod.yaml"
+    sudo -u ec2-user c9 open "$doc_dir/node.yaml"
+    sudo -u ec2-user c9 open "$doc_dir/cluster.yaml"
+    sudo -u ec2-user c9 open "$doc_dir/minikube.yaml"
 }
 
 install_minikube() {
